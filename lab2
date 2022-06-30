@@ -1,0 +1,159 @@
+activity_main.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<EditText
+android:id="@+id/input1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="132dp"
+android:ems="10"
+android:hint="Enter a Number"
+android:inputType="numberDecimal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.502"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+<EditText
+android:id="@+id/input2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="40dp"
+android:ems="10"
+android:hint="Enter a number"
+android:inputType="numberDecimal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.502"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/input1" />
+<TextView
+android:id="@+id/result"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="88dp"
+android:textSize="24sp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/input2" />
+<Button
+android:id="@+id/add"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="72dp"
+android:layout_marginLeft="72dp"
+android:layout_marginTop="52dp"
+android:onClick="addition"
+android:text="Add"
+app:layout_constraintEnd_toStartOf="@+id/sub"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/result" />
+<Button
+android:id="@+id/sub"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="52dp"
+android:layout_marginEnd="52dp"
+android:layout_marginRight="52dp"
+android:onClick="subtraction"
+android:text="sub"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/result" />
+<Button
+android:id="@+id/mul"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="60dp"
+android:text="mul"
+app:layout_constraintEnd_toStartOf="@+id/div"
+app:layout_constraintHorizontal_bias="0.393"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/add" />
+<Button
+android:id="@+id/div"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="60dp"
+android:text="div"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.839"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/sub" />
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Simple Calculator"
+tools:layout_editor_absoluteX="150dp"
+tools:layout_editor_absoluteY="44dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+MainActivity.java:
+
+package com.example.simcalci;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+private EditText input1,input2;
+private TextView result;
+private Button add,sub,mul,div;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+}
+public void addition(View view){
+input1 = findViewById(R.id.input1);
+input2 = findViewById(R.id.input2);
+result = findViewById(R.id.result);
+float sum =
+(Float.parseFloat(input1.getText().toString()))+(Float.parseFloat(input2.ge
+tText().toString()));
+
+Dept. of CSE, VVCE 9
+result.setText("Sum is "+sum);
+}
+public void subtraction(View view){
+input1 = findViewById(R.id.input1);
+input2 = findViewById(R.id.input2);
+result = findViewById(R.id.result);
+float sub = (Float.parseFloat(input1.getText().toString()))-
+(Float.parseFloat(input2.getText().toString()));
+result.setText("Difference is "+sub);
+}
+public void multiplication(View view){
+input1 = findViewById(R.id.input1);
+input2 = findViewById(R.id.input2);
+result = findViewById(R.id.result);
+float prod =
+(Float.parseFloat(input1.getText().toString()))*(Float.parseFloat(input2.ge
+tText().toString()));
+result.setText("Difference is "+prod);
+}
+public void division(View view){
+input1 = findViewById(R.id.input1);
+input2 = findViewById(R.id.input2);
+result = findViewById(R.id.result);
+float secondNumber = Float.parseFloat(input2.getText().toString());
+if (secondNumber!=0)
+{
+float div =
+(Float.parseFloat(input1.getText().toString()))/(Float.parseFloat(input2.ge
+tText().toString()));
+result.setText("Division is "+div);
+}
+Toast.makeText(this, "The denominator cannot be zero",
+Toast.LENGTH_SHORT).show();
+}
+}
