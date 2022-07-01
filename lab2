@@ -120,8 +120,6 @@ result = findViewById(R.id.result);
 float sum =
 (Float.parseFloat(input1.getText().toString()))+(Float.parseFloat(input2.ge
 tText().toString()));
-
-Dept. of CSE, VVCE 9
 result.setText("Sum is "+sum);
 }
 public void subtraction(View view){
